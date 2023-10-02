@@ -1,0 +1,63 @@
+@import url('https://fonts.google.com/specimen/Nunito+Sans');
+
+.Hero {
+    background-color: hsl(207, 26%, 17%);
+    height: 100%;
+}
+
+.SearchField {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 33em;
+}
+
+.SearchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.SearchIcon {
+    background-color: hsl(209, 23%, 22%);
+    color: rgb(255, 255, 255);
+    width: 4em;
+    height: 2.2em;
+    padding: 10px; 
+    font-size: 10px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+input {
+    width: 25em;
+    height: 1.8em;
+    padding: 10px;
+    color: white;
+    background-color: 
+    hsl(209, 23%, 22%);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 12px;
+}
+
+::placeholder {
+    color: white;
+}
+
+select {
+    width: 12em;
+    height: 3em;
+    padding: 10px;
+    color: white;
+    border-radius: 4px;
+    background-color: hsl(209, 23%, 22%);
+    border: none;
+    outline: none;
+    margin-top: 30px;
+}
+
+
