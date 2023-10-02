@@ -1,10 +1,5 @@
 @import url('https://fonts.google.com/specimen/Nunito+Sans');
 
-.Hero {
-    background-color: hsl(207, 26%, 17%);
-    height: 100%;
-}
-
 .SearchField {
     display: flex;
     justify-content: center;

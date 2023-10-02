@@ -1,9 +1,9 @@
 .CountryBody {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin-top: 3em;
+    gap: 3em;
 }
 
 .CountryCard {
@@ -13,6 +13,7 @@
     color: white;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
+    margin-top: 3em;
 }
 
 img {

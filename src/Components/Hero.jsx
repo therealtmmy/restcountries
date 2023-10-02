@@ -1,27 +1,28 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import "../Components/Hero.css"
 import CountryCard from './CountryCard'
 import { FaSearch } from "react-icons/fa";
+import data from "../Components/data.json"
 
-const restApi = "https://restcountries.com/v3.1/all"
 
 const Hero = () => {
-  const [search, setSearch]  = useState([]);
+  const [access, setAccess]  = useState(data);
 
-  const rest = async () => {
-    const response = await fetch(`${restApi}`)
-    const data = await response.json();
-    setSearch(data)
-  }
+  // useEffect(() => {
+  //   async function getApi() {
+  //     const res = await fetch("https://restcountries.com/v3.1/all")
+  //     const data = await res.json()
+  //     setAccess(data)
+  //   }
 
-  useEffect(() => {
-    rest()
-  }, [])
+  //  getApi()
+  // }, [])
+
+  // There is an issue with the provided api. Hence the need to go with the provided  json file came on board.
 
   return (
     <>
-    <div className='Hero'>
       <div className='SearchField'>
         <div className='SearchBar'>
        <FaSearch className='SearchIcon'/>
@@ -43,10 +44,13 @@ const Hero = () => {
         </select>
       </div>
 
-      <div>
-        <CountryCard find={search}/>
+      <div className='CountryBody'>
+      {Array.isArray(access) ? (
+          access.map((find) => (<CountryCard find={find}/>))
+        ) : (
+          <p>Loading or no data available</p>
+        )}
       </div>
-    </div>
     </>
   )
 }
