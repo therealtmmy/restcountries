@@ -18,7 +18,14 @@
 
 .darkMode {
     display: flex;
-    gap: 10px;
+    gap: 0px;
     align-items: center;
     justify-content: center;
+}
+
+button {
+    border: none;
+    background-color: hsl(209, 23%, 22%);
+    color: white;
+    cursor: pointer;
 }

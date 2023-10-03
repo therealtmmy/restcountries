@@ -19,7 +19,7 @@ const Hero = () => {
         setAccess(foundItems);
       }
     }
- }, [search, access, data])
+ }, [search, data])
 
   return (
     <>
@@ -36,7 +36,7 @@ const Hero = () => {
 
         <select>
           <option value="Filter by Region">Filter by Region</option>
-          <option value="Africa">Africa</option>
+          <option value={search} onChange={(e) => setSearch(e.target.value)}>Africa</option>
           <option value="America">America</option>
           <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
