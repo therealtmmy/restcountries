@@ -9,6 +9,7 @@ import data from "../Components/data.json"
 const Hero = () => {
   const [access, setAccess]  = useState(data);
   const [search, setSearch] = useState("");
+  const [region, setRegion] = useState("");
 
   useEffect(() => {
     if (Array.isArray(access)){
@@ -19,7 +20,18 @@ const Hero = () => {
         setAccess(foundItems);
       }
     }
- }, [search, data])
+ }, [search, access])
+
+   useEffect(() => {
+    if (Array.isArray(access)){
+      if (region === ''){
+        setAccess(data);
+      } else {
+        const foundRegion = access.filter(item => item.region.toLowerCase().includes(region.toLowerCase()));
+        setAccess(foundRegion);
+      } 
+    }
+ }, [region, access])
 
   return (
     <>
@@ -34,9 +46,9 @@ const Hero = () => {
         />
         </div>
 
-        <select>
-          <option value="Filter by Region">Filter by Region</option>
-          <option value={search} onChange={(e) => setSearch(e.target.value)}>Africa</option>
+        <select value={region} onChange={(e) => setRegion(e.target.value)}>
+          <option value="">Filter by Region</option>
+          <option value="Africa">Africa</option>
           <option value="America">America</option>
           <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
@@ -48,7 +60,7 @@ const Hero = () => {
       {Array.isArray(access) ? (
         access.map((items) => <CountryCard items={items} />)
       ) : (
-        <p>Not an Array</p>
+        <p>Loading</p>
       )}
       </div>
 
