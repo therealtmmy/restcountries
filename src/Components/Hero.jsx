@@ -11,27 +11,25 @@ const Hero = () => {
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("");
 
-  useEffect(() => {
-    if (Array.isArray(access)){
-      if (search === ''){
-        setAccess(data);
-      } else {
-        const foundItems = access.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
-        setAccess(foundItems);
-      }
-    }
- }, [search, access])
+ useEffect(() => {
+  // Create a copy of the original data to filter
+  let filteredData = [...data];
 
-   useEffect(() => {
-    if (Array.isArray(access)){
-      if (region === ''){
-        setAccess(data);
-      } else {
-        const foundRegion = access.filter(item => item.region.toLowerCase().includes(region.toLowerCase()));
-        setAccess(foundRegion);
-      } 
-    }
- }, [region, access])
+  // Apply the search filter
+  if (search) {
+    filteredData = filteredData.filter(item =>
+      item.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  // Apply the region filter
+  if (region) {
+    filteredData = filteredData.filter(value => value.region.toLowerCase().includes(region.toLowerCase()));
+  }
+
+  setAccess(filteredData);
+}, [search, region]);
+
 
   return (
     <>
@@ -58,7 +56,7 @@ const Hero = () => {
 
       <div className='CountryBody'>
       {Array.isArray(access) ? (
-        access.map((items) => <CountryCard items={items} />)
+        access.map((items, index) => <CountryCard items={items} key={index} />)
       ) : (
         <p>Loading</p>
       )}
